@@ -191,7 +191,13 @@
       .folha { box-shadow:none; page-break-after:always; margin:0; }
       @page { size:215.9mm 279.4mm; margin:0; }
     }
-  </style>
+    /* Responsividade alinhada ao PWA Reservas */
+    .topbar{grid-template-columns:auto 1fr auto;gap:10px;padding:18px 12px 14px}
+    .brand-left img{height:34px}.brand-right img{height:40px;padding:5px 8px}.brand-center{min-width:0}.brand-center h1{font-size:16px}
+    .footer{margin-top:40px;padding:28px 0 24px}.footer p{line-height:1.5}
+    @media(max-width:600px){.wrap{padding-left:12px;padding-right:12px}}
+    @media(max-width:480px){.topbar{gap:7px}.brand-left img{height:27px}.brand-right img{height:34px;padding:4px 6px}.brand-center h1{font-size:14px}}
+</style>
 </head>
 <body>
 
