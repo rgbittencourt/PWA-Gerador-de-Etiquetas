@@ -36,6 +36,10 @@ pnpm run build
 
 Confirme escala de 100%, margens do navegador e modelo da folha antes de imprimir lotes. Faça uma página de teste sempre que impressora, navegador ou etiqueta forem alterados.
 
+## Acervo complementar
+
+Os manuais, capturas, ícones e o pack oficial preservados em `1. Projetos` estão catalogados em [`docs/acervo-google-drive.md`](docs/acervo-google-drive.md).
+
 ## Licença
 
 Projeto de uso institucional do INOVALAB — IFSC Câmpus Continente.
