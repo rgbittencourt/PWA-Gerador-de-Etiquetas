@@ -2,6 +2,11 @@
 
 PWA para criação e impressão de etiquetas padronizadas de equipamentos, acessórios, armários e materiais do INOVALAB.
 
+## Acesso
+
+- Produção no Cloudflare Workers: [gerador-etiquetas-inovalab.rogerio-bittencourt-1a9.workers.dev](https://gerador-etiquetas-inovalab.rogerio-bittencourt-1a9.workers.dev)
+- Backend: Google Apps Script e Planilha de Controle do INOVALAB.
+
 ## Funcionalidades
 
 - pesquisa e seleção de registros do inventário;
@@ -30,6 +35,7 @@ pnpm install
 pnpm dev
 pnpm test
 pnpm run build
+pnpm run deploy
 ```
 
 ## Impressão
