@@ -183,6 +183,18 @@
       font-size:6pt; color:#666; margin-top:0.6mm;
       white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
     }
+    .etiqueta.modelo-6089 {
+      gap:1.2mm;
+      padding:0.8mm 1.2mm;
+    }
+    .etiqueta.modelo-6089 .txt .cod { font-size:7pt; line-height:1.05; }
+    .etiqueta.modelo-6089 .txt .nome {
+      font-size:5.5pt; line-height:1.08; margin-top:0.25mm;
+      -webkit-line-clamp:1;
+    }
+    .etiqueta.modelo-6089 .txt .local {
+      font-size:4.8pt; line-height:1.05; margin-top:0.2mm;
+    }
 
     @media print {
       body > *:not(#viewImpressao) { display:none !important; }
@@ -270,6 +282,7 @@
         <div>
           <label class="field-label" for="modeloEtiqueta">Modelo de etiqueta (folha Carta)</label>
           <select id="modeloEtiqueta" onchange="onMudarModeloEtiqueta()">
+            <option value="6089" selected>Pimaco 6089 — 16,93×44,45mm — 60/folha (4×15)</option>
             <option value="6180">Pimaco 6180 — 25,4×66,7mm — 30/folha (3×10)</option>
             <option value="6081">Pimaco 6081 — 25,4×101,6mm — 20/folha (2×10)</option>
             <option value="6082">Pimaco 6082 — 33,9×101,6mm — 14/folha (2×7)</option>
@@ -506,6 +519,7 @@
 
     // ===== Modelos de etiqueta (folha Carta 215,9×279,4mm — dados oficiais Pimaco) =====
     const MODELOS_ETIQUETA = {
+      '6089': { altura:16.93, largura:44.45, cols:4, rows:15, margemTop:12.725, margemLeft:19.05, pitchV:16.93, pitchH:44.45, raio:1.5 },
       '6180': { altura:25.4, largura:66.7, cols:3, rows:10, margemTop:12.7, margemLeft:4.8, pitchV:25.4, pitchH:69.8 },
       '6081': { altura:25.4, largura:101.6, cols:2, rows:10, margemTop:12.7, margemLeft:4.0, pitchV:25.4, pitchH:106.8 },
       '6082': { altura:33.9, largura:101.6, cols:2, rows:7,  margemTop:21.2, margemLeft:4.0, pitchV:33.9, pitchH:106.8 },
@@ -624,11 +638,12 @@
         const top = modelo.margemTop + row * modelo.pitchV + ajusteY;
 
         const etiqueta = document.createElement('div');
-        etiqueta.className = 'etiqueta' + (mostrarCalibragem ? ' calibrar' : '');
+        etiqueta.className = 'etiqueta modelo-' + document.getElementById('modeloEtiqueta').value + (mostrarCalibragem ? ' calibrar' : '');
         etiqueta.style.left = left + 'mm';
         etiqueta.style.top = top + 'mm';
         etiqueta.style.width = modelo.largura + 'mm';
         etiqueta.style.height = modelo.altura + 'mm';
+        etiqueta.style.borderRadius = (modelo.raio || 0) + 'mm';
 
         const qrTamanho = Math.max(12, Math.min(modelo.altura - 3, modelo.largura * 0.42));
 
