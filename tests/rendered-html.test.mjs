@@ -27,7 +27,7 @@ test("includes the Pimaco 6089 60-label Letter layout", async () => {
   assert.match(source, /Pimaco 6089 — 16,93×44,45mm — 60\/folha \(4×15\)/);
   assert.match(
     source,
-    /'6089': \{ altura:16\.93, largura:44\.45, cols:4, rows:15, margemTop:12\.725, margemLeft:19\.05, pitchV:16\.93, pitchH:44\.45, raio:1\.5 \}/,
+    /'6089': \{ altura:16\.93, largura:44\.45, cols:4, rows:15, margemTop:12\.5, margemLeft:14\.5, pitchV:16\.93, pitchH:47\.45, raio:1\.5 \}/,
   );
   assert.match(source, /\.etiqueta\.modelo-6089/);
 });
