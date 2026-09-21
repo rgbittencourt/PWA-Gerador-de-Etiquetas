@@ -11,7 +11,15 @@ test("preserves the original label generator", async () => {
   assert.match(page, /\/etiquetas\.html/);
   const publicSource = await readFile(new URL("../public/etiquetas.html", import.meta.url), "utf8");
   assert.match(publicSource, /\/api\/etiquetas/);
+  assert.match(publicSource, /id="filtroLocal"/);
+  assert.match(publicSource, /item\.local !== local/);
   assert.doesNotMatch(publicSource, /google\.script\.run/);
+});
+
+test("keeps the location filter in the Google Apps Script version", async () => {
+  const source = await readFile(new URL("../google-apps-script/Index.html", import.meta.url), "utf8");
+  assert.match(source, /id="filtroLocal"/);
+  assert.match(source, /item\.local !== local/);
 });
 
 test("declares installable branded assets", async () => {

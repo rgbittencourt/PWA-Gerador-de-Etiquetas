@@ -236,6 +236,7 @@
       <div class="filtros">
         <input type="text" id="busca" placeholder="Buscar por nome ou código...">
         <select id="filtroCategoria"><option value="">Todas as categorias</option></select>
+        <select id="filtroLocal"><option value="">Todas as localizações</option></select>
         <select id="filtroOrigem">
           <option value="">Patrimoniado + Não Patrimoniado</option>
           <option value="Patrimoniado">Somente Patrimoniado</option>
@@ -405,6 +406,16 @@
         selCat.appendChild(opt);
       });
 
+      // popular filtro de localizações
+      const locais = [...new Set(itens.map(i => i.local).filter(Boolean))]
+        .sort((a, b) => String(a).localeCompare(String(b), 'pt-BR', {sensitivity:'base'}));
+      const selLocal = document.getElementById('filtroLocal');
+      locais.forEach(local => {
+        const opt = document.createElement('option');
+        opt.value = local; opt.textContent = local;
+        selLocal.appendChild(opt);
+      });
+
       renderLista();
     }
 
@@ -441,6 +452,7 @@
     function aplicarFiltros() {
       const busca = document.getElementById('busca').value.trim().toLowerCase();
       const cat = document.getElementById('filtroCategoria').value;
+      const local = document.getElementById('filtroLocal').value;
       const origem = document.getElementById('filtroOrigem').value;
 
       document.querySelectorAll('#lista .item').forEach(div => {
@@ -453,6 +465,7 @@
           if (!alvo.includes(busca)) visivel = false;
         }
         if (cat && item.categoria !== cat) visivel = false;
+        if (local && item.local !== local) visivel = false;
         if (origem && item.origem !== origem) visivel = false;
 
         div.classList.toggle('oculto', !visivel);
@@ -476,6 +489,7 @@
 
     document.getElementById('busca').addEventListener('input', aplicarFiltros);
     document.getElementById('filtroCategoria').addEventListener('change', aplicarFiltros);
+    document.getElementById('filtroLocal').addEventListener('change', aplicarFiltros);
     document.getElementById('filtroOrigem').addEventListener('change', aplicarFiltros);
 
     function recarregar() {
