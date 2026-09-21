@@ -20,4 +20,11 @@ export const metadata: Metadata = {
   twitter: { card: "summary", title: "Gerador de Etiquetas INOVALAB", description: "Crie etiquetas com QR Code para o inventário do INOVALAB.", images: ["/etiquetas-compartilhamento.png"] },
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) { return <html lang="pt-BR"><body>{children}</body></html>; }
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  return (
+    <html lang="pt-BR">
+      <body>{children}</body>
+      <script src="/pwa-register.js" defer />
+    </html>
+  );
+}

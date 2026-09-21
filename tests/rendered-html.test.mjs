@@ -25,9 +25,16 @@ test("keeps the location filter in the Google Apps Script version", async () => 
 test("declares installable branded assets", async () => {
   const manifest = JSON.parse(await readFile(new URL("../public/manifest.webmanifest", import.meta.url), "utf8"));
   assert.equal(manifest.name, "Gerador de Etiquetas INOVALAB");
+  assert.equal(manifest.display, "standalone");
   assert.equal(manifest.icons.length, 2);
   await readFile(new URL("../public/etiquetas-icon-512.png", import.meta.url));
   await readFile(new URL("../public/favicon.png", import.meta.url));
+  const layout = await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8");
+  const registration = await readFile(new URL("../public/pwa-register.js", import.meta.url), "utf8");
+  const serviceWorker = await readFile(new URL("../public/sw.js", import.meta.url), "utf8");
+  assert.match(layout, /pwa-register\.js/);
+  assert.match(registration, /serviceWorker\.register\('\/sw\.js'\)/);
+  assert.match(serviceWorker, /url\.pathname\.startsWith\('\/api\/'\)/);
 });
 
 test("includes the Pimaco 6089 60-label Letter layout", async () => {
