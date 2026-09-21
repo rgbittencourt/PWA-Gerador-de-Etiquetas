@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://gerador-etiquetas-inovalab.rogerio-bittencourt.chatgpt.site"),
+  metadataBase: new URL("https://gerador-etiquetas-inovalab.rogerio-bittencourt-1a9.workers.dev"),
   title: "Gerador de Etiquetas INOVALAB",
   description: "Crie e imprima etiquetas com QR Code para equipamentos e materiais do INOVALAB.",
   manifest: "/manifest.webmanifest",

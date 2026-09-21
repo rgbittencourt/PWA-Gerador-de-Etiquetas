@@ -33,6 +33,7 @@ test("declares installable branded assets", async () => {
   const registration = await readFile(new URL("../public/pwa-register.js", import.meta.url), "utf8");
   const serviceWorker = await readFile(new URL("../public/sw.js", import.meta.url), "utf8");
   assert.match(layout, /pwa-register\.js/);
+  assert.match(layout, /gerador-etiquetas-inovalab\.rogerio-bittencourt-1a9\.workers\.dev/);
   assert.match(registration, /serviceWorker\.register\('\/sw\.js'\)/);
   assert.match(serviceWorker, /url\.pathname\.startsWith\('\/api\/'\)/);
 });
